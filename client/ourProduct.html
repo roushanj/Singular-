@@ -1,0 +1,563 @@
+<div class="top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 clearfix">
+						<div class="minv-del-c">
+							<div class="min-value hidden-xs">
+								<span>Minimum Order Value <span class="rup-symbol">₹</span> <span class="value">500/-</span></span>
+							</div>
+							<div class="delivery">
+								<span>Delivery at</span>
+
+								<input type="text" data-toggle="modal" data-target="#hp-pincode"  data-backdrop="static" data-keyboard="false" value="" name="" readonly  placeholder="Pin Code">
+								<span><a data-toggle="modal" data-target="#hp-pincode" data-backdrop="static" data-keyboard="false" href="javascript:void(0);" ><img src="http://www.spencers.in/skin/frontend/default/blank/img/icon-geo.png"></a></span>
+							</div>
+						</div>
+
+
+<!-- Modal -->
+		<div id="hp-pincode" class="modal fade" role="" data-keyboard="true" tabindex="-1">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<!--<button type="button" class="close" data-dismiss="modal">
+							&nbsp;
+						</button> -->
+						<h4 class="modal-title">Wow! It looks like you are ready to start your shopping spree!</h4>
+						<div class="desc">
+							Select your city and area / pin-code to help us assist you better.
+						</div>						
+					</div>
+					<div class="modal-body">
+						
+
+
+<style>
+	.store-switcher{min-height:auto !important;}
+	.StoreLocator{width:750px !important}
+	.changecity_popup .cartbutton_r{margin-top:0 !important}
+	
+	.pincodetxt {
+    height: 25px;
+    padding: 0 10px;
+    width: 320px;
+   /* margin-left: 15px;*/
+}
+.msg{
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #E64545;
+}
+div#ui-id-1.store-switcher.ui-dialog-content.ui-widget-content{
+	min-height: inherit !important;
+}
+#ncrtxt{display:none}
+#lucknowtxt{display:none}
+#areacover{display: block; position: absolute; height: 60px; width: 240px; opacity: 0; background: transparent none repeat scroll 0% 0%; z-index: 10;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="http://www.spencers.in/js/areasearch/awesomplete.css" />
+<div class="store-switcher">
+	<div class="changecity_popup">
+    <span class="msg"></span>
+    <div id="city-area-selector">
+		<div class="col-ls-12 col-sm-12">
+			<div class="col-ls-6 col-sm-6 col-xs-12 l-sec city-selector">
+				<div class="seldrp-down-c">
+					<select name="city" id="cityselect" class="sel-city-c">
+						<option value="">Select a City</option>
+						<option value="kolkata">Kolkata</option>
+						<option value="ncr">Delhi NCR</option>
+						<option value="lucknow">Lucknow</option>
+						<option value="hyderabad">Hyderabad</option>
+						<option value="chennai">Chennai</option>
+					</select>
+					</div>
+			</div>
+			<div class="col-ls-6 col-sm-6 col-xs-12 r-sec area-selector">
+				<div class="form-group">
+					<div id="areacover" >&nbsp;</div>
+					<input id="kolkatatxt" class="pincode-input pincodetxt" type="text" placeholder="Enter Pincode or Area" autocomplete="off" disabled  />
+					<input id="ncrtxt" class="pincode-input pincodetxt" type="text" placeholder="Enter Pincode or Area" autocomplete="off"  />
+					<input id="lucknowtxt" class="pincode-input pincodetxt" type="text" placeholder="Enter Pincode or Area" autocomplete="off" />
+                                        <input id="hyderabadtxt" class="pincode-input pincodetxt" type="text" placeholder="Enter Pincode or Area" autocomplete="off" style="display:none;" />
+					<input id="chennaitxt" class="pincode-input pincodetxt" type="text" placeholder="Enter Pincode or Area" autocomplete="off" style="display:none;" />
+					<input id="pincodetxt" type="hidden" value=""/>
+					<input id="goflag" type="hidden" value="1"/>
+					</div>
+			</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+    <div class="col-ls-12 col-sm-12"><div class="col-ls-12 col-sm-12 col-xs-12 text-center">
+			<div class="cartbutton_r">
+						<div class="navbtn"> 
+							<span class="navbtn_l"></span>
+							<span class="navbtn_m">
+									<input type="button" value="Submit" class="mj_btnbg pcpu_btnSubmit btn btn-warning sps-button" id="pcpu_btnSubmit">
+							</span>
+							<span class="navbtn_r"> </span>
+						</div>
+				</div>
+				</div>
+                </div>
+				<div class="clear"></div>
+								<a href="./?___store=h009" style="display: none; margin: 5px 0px -10px;">Skip</a>
+   </div>
+</div>
+
+<script type="text/javascript" src="http://www.spencers.in/js/areasearch/awesomplete.js"></script>
+
+<script>
+		jQuery( document ).ready(function() {
+			
+			
+			jQuery("#cityselect").on("change", function(e){	
+				
+				var city = jQuery(this).val();
+				var flag = city==''? true:false;
+				
+				if(city=='kolkata' ||  city==''){
+					jQuery("#ncrtxt").hide();
+					jQuery("#lucknowtxt").hide();
+					jQuery("#chennaitxt").hide();
+					jQuery("#hyderabadtxt").hide();
+					jQuery("#kolkatatxt").removeAttr("disabled");
+					jQuery("#kolkatatxt").prop('disabled',flag).show();
+				}
+				else if(city=='ncr'){
+					jQuery("#kolkatatxt").prop('disabled',true).hide();
+					jQuery("#lucknowtxt").prop('disabled',true).hide();
+					jQuery("#chennaitxt").prop('disabled',true).hide();
+					jQuery("#hyderabadtxt").prop('disabled',true).hide();
+					jQuery("#ncrtxt").removeAttr("disabled");
+					jQuery("#ncrtxt").show();
+				} else if(city == 'lucknow') {
+					jQuery("#kolkatatxt").prop('disabled',true).hide();
+					jQuery("#ncrtxt").prop('disabled',true).hide();
+					jQuery("#chennaitxt").prop('disabled',true).hide();
+					jQuery("#hyderabadtxt").prop('disabled',true).hide();
+					jQuery("#lucknowtxt").removeAttr("disabled");
+					jQuery("#lucknowtxt").show();
+				}
+				else if(city == 'hyderabad') {
+					jQuery("#kolkatatxt").prop('disabled',true).hide();
+					jQuery("#ncrtxt").prop('disabled',true).hide();
+					jQuery("#lucknowtxt").prop('disabled',true).hide();
+					jQuery("#chennaitxt").prop('disabled',true).hide();
+					jQuery("#hyderabadtxt").removeAttr("disabled");
+					jQuery("#hyderabadtxt").show();
+				}
+				else if(city == 'chennai') {
+					jQuery("#kolkatatxt").prop('disabled',true).hide();
+					jQuery("#ncrtxt").prop('disabled',true).hide();
+					jQuery("#lucknowtxt").prop('disabled',true).hide();
+					jQuery("#hyderabadtxt").prop('disabled',true).hide();
+					jQuery("#chennaitxt").removeAttr("disabled");
+					jQuery("#chennaitxt").show();
+				}
+				jQuery(this).css("border-color", "#dcdee0");
+				
+				(city=='')? jQuery("#areacover").show() : jQuery("#areacover").hide();
+				
+			});
+						
+		});		
+		
+		
+		jQuery.get("/js/areasearch/searchArea.json", function(response) {
+		//	var kolkataArea = response;
+			var inputK = document.getElementById("kolkatatxt");
+			new Awesomplete(inputK,{list:response.kolkata,maxItems: 10});
+			var inputN = document.getElementById("ncrtxt");
+			new Awesomplete(inputN,{list:response.ncr,maxItems: 10});
+			// Lucknow
+			var inputL = document.getElementById("lucknowtxt");
+			new Awesomplete(inputL,{list:response.lucknow,maxItems: 10});
+			//Hyderabad
+			var inputH = document.getElementById("hyderabadtxt");
+			new Awesomplete(inputH,{list:response.hyderabad,maxItems: 10});
+			//chennai
+			var inputC = document.getElementById("chennaitxt");
+			new Awesomplete(inputC,{list:response.chennai,maxItems: 10});
+		});
+		
+	/*	jQuery.get("/spencers2/js/areasearch/ncrArea.json", function(response) {
+			var ncrArea = response;
+			var inputN = document.getElementById("ncrtxt");
+			new Awesomplete(inputN,{list:ncrArea});		
+		});
+*/
+			
+		window.addEventListener("awesomplete-selectcomplete", function(e){
+			jQuery("#pincodetxt").val(e.text.value);	
+			jQuery("#goflag").val(0);		
+			//jQuery(".changecity_popup #pcpu_btnSubmit").trigger('click');				
+		}, false);
+			
+			
+			
+
+		
+</script>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+
+					<div class="modal-footer">
+												<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!--Model ends-->
+						<div class="available-slot hidden-xs padding_home">
+
+							<div class="dropdown avl-slt-dpdwn" style="display:block !important;">
+								<span class="slot-icon"><img src="http://www.spencers.in/skin/frontend/default/blank/img/icon-deviveryslot.png"></span>
+								<a class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="hidden-sm">Our Delivery Slots</span> <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">7:30 AM - 10:00 AM</a></li><li><a href="#">10:30 AM - 12:30 PM</a></li><li><a href="#">12:30 PM - 03:00 PM</a></li><li><a href="#">03:00 PM - 05:00 PM</a></li><li><a href="#">05:00 PM - 07:30 PM</a></li><li><a href="#">07:30 PM - 10:00 PM</a></li>								</ul>
+							</div>
+						</div>
+
+						<div class="toll-free hidden-md hidden-sm hidden-xs">
+
+							<span class="call"><img src="http://www.spencers.in/skin/frontend/default/blank/img/icon-call.png"></span><span>Toll Free <span class="num">18002660134</span></span>
+						</div>
+						<div class="login-signup">
+							<div class="login-icon">
+								<span><img src="http://www.spencers.in/skin/frontend/default/blank/img/icon-login.png"></span>
+							</div>
+							
+														<ul class="login-butt" style="display:none";>
+							<li>
+								<a href="http://www.spencers.in/customer/account/login/referer/aHR0cDovL3d3dy5zcGVuY2Vycy5pbi8,/" title="spencer's" >Sign In</a>
+							</li>
+							
+							
+								
+								<li>
+																		<a href="http://www.spencers.in/customer/account/create/" title="spencer's">Sign Up</a>
+																	</li>
+							</ul>
+						</div>
+
+					</div>
+
+					<!-- top bar ends-->
+				</div>
+			</div>
+		</div>
+
+
+		
+				
+		<!--  ---------------------  Start second top -->
+		<div class="row-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-xs-6 col-sm-3">
+						<button type="button" class="navbar-toggle offcanvas-toggle js-offcanvas-has-events" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
+							<span class="sr-only">Toggle navigation</span>
+						</button>
+						<a href="http://www.spencers.in/">
+						<img src="http://www.spencers.in/skin/frontend/default/blank/img/spencers-logo.png" class="brand-logo" title="Spencer's - Makes fine living affordable">
+						</a>
+					</div>
+					<div class="searchbarbg_r col-md-5 col-xs-3 col-sm-6" id="searchmain">
+  <div class="searchbarbg_l">                                    
+		<div class="srachleft_div" id="searchbar">
+ 
+  <form id="search_mini_form" action="http://www.spencers.in/search/" method="get">
+ <div onblur="javascript:return hideDiv();" tabindex="0" class="searchtxtdiv">
+   <div class="">
+						<div class="input-group hidden-xs">
+							<div class="input-group-btn search-panel">
+								<button type="button" id="srh-cat-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<span id="search_concept">Category</span><span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+								      
+							<li id="catli_6"><a href="#"><span value="6">Beverages</span></a></li>
+						      
+							<li id="catli_7"><a href="#"><span value="7">Branded Foods</span></a></li>
+						      
+							<li id="catli_8"><a href="#"><span value="8">Bread, Dairy & Eggs</span></a></li>
+						      
+							<li id="catli_3"><a href="#"><span value="3">Fruits & Vegetables</span></a></li>
+						      
+							<li id="catli_4"><a href="#"><span value="4">Grocery & Staples</span></a></li>
+						      
+							<li id="catli_295"><a href="#"><span value="295">Offers</span></a></li>
+						      
+							<li id="catli_10"><a href="#"><span value="10">Household</span></a></li>
+						      
+							<li id="catli_287"><a href="#"><span value="287">Imported & Gourmet</span></a></li>
+						      
+							<li id="catli_5"><a href="#"><span value="5">Non-Veg</span></a></li>
+						      
+							<li id="catli_9"><a href="#"><span value="9">Personal Care</span></a></li>
+						      
+							<li id="catli_327"><a href="#"><span value="327">What's New</span></a></li>
+														</ul>
+							</div>	
+							
+							 <span>
+							<!--<input id="search" type="text" name="" value="" class=" searchtext input-text" /> -->
+							<input id="search" type="text" name="q" value="" class=" searchtext input-text required-entry" placeholder="I&#039;m looking for" />
+							<input type="submit" title="Search" value="" class="searchlens mob-srh-btn-desk" />
+							</span>
+							
+        
+        
+         <!--<div class="searchbutton">
+					<div class="navbtn">
+							<span class="navbtn_l"></span>
+							<span class="navbtn_m">
+								 <button class="mj_btnbg button" title="Search" type="submit"><span><span>Search</span></span></button>
+							</span>
+							<span class="navbtn_r"></span>
+					</div>
+			</div> -->
+							</div>
+							<div class="mob-srh-btn hidden-lg hidden-md hidden-sm" style="width:20px!important;">
+							&nbsp;
+						</div>
+						<div class="cross" >X</div>
+						<span class="searchdropdown" id="ddlSearchTree" onclick="javascript:return CheckDiv();" style="display: inline;">
+								<input type="text" name="" value="All Categories" id="txtSearchTree" disabled="disabled" style="display:none" class="treetxtbox">
+								<span class="searchdropdownstyle" id="imgDdl" style=""></span>
+							</span>       
+        
+							<div id="search_autocomplete" class="search-autocomplete"></div>
+		<script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+            var SolrBridgeAutocomplete = new SolrBridgeSearch('search',{id:'autocomplete',target:'#search_mini_form',inputid:'search',containerid:'search_mini_form',boxWidth:469,searchTextPlaceHolder:'Search entire store here...',currencySign:'&nbsp;₹&nbsp;',currencycode:'INR',ajaxBaseUrl:'http://www.spencers.in',searchResultUrl:'http://www.spencers.in/search',viewAllResultText:'View all search results for %s',categoryText:'Categories',viewAllCategoryText:'View all categories >>',viewAllBrandsText:'View all brands >>',keywordsText:'Keywords',productText:'product',productsText:'products',brandText:'Brands',storetimestamp:'1496757870',storeid:'13',customergroupid:'0',categoryRedirect:'0',showBrand:'1',showBrandAttributeCode:'brand',displaykeywordsuggestion:'true',displayResultOfText:'Search results for %s',displayResultOfInsteadText:'Search results for %s instead',currencyPos:'before',displayThumb:'1',allowFilter:'1',categoryLimit:'0',brandLimit:'3',fromPriceText:'from',ajaxprice:0});
+            var SolrBridgeAutocomplete = new SolrBridgeSearch('search1',{id:'autocomplete',target:'#search_mini_form',inputid:'search1',containerid:'search_mini_form',boxWidth:469,searchTextPlaceHolder:'Search entire store here...',currencySign:'&nbsp;₹&nbsp;',currencycode:'INR',ajaxBaseUrl:'http://www.spencers.in',searchResultUrl:'http://www.spencers.in/search',viewAllResultText:'View all search results for %s',categoryText:'Categories',viewAllCategoryText:'View all categories >>',viewAllBrandsText:'View all brands >>',keywordsText:'Keywords',productText:'product',productsText:'products',brandText:'Brands',storetimestamp:'1496757870',storeid:'13',customergroupid:'0',categoryRedirect:'0',showBrand:'1',showBrandAttributeCode:'brand',displaykeywordsuggestion:'true',displayResultOfText:'Search results for %s',displayResultOfInsteadText:'Search results for %s instead',currencyPos:'before',displayThumb:'1',allowFilter:'1',categoryLimit:'0',brandLimit:'3',fromPriceText:'from',ajaxprice:0});
+        //]]>
+        </script>
+					</div>
+					
+					</div>
+</form>
+</div>
+  </div>
+   </div>
+   <script>
+jQuery(window).load(function () {
+    var screen = jQuery(window)    
+    if (screen.width() > 500) {
+    	//alert('search');
+        jQuery("#search1").prop('disabled', true);
+        jQuery("#search").prop('disabled', false);
+    }
+    else {
+        jQuery("#search1").prop('disabled', false);
+        jQuery("#search").prop('disabled', true);
+    }
+});
+   </script>
+   <style type="text/css" >
+   
+   input:focus::-webkit-input-placeholder{
+    color: transparent!important;
+}
+input:focus::-moz-placeholder{
+    color: transparent!important;
+}
+input:focus:-moz-placeholder{
+    color: transparent!important;
+}
+
+   </style>
+   
+					<div class="col-md-4 col-xs-3 col-sm-3">
+						<div class="cart-status-c">
+							<div class="app-down-c hidden-sm hidden-xs">
+								<a href="https://appsto.re/in/l6J7eb.i" target="_blank">
+								<span class="apple-app" title="app store"> &nbsp; </span></a>
+								<a href="https://play.google.com/store/apps/details?id=com.bsl.spencers.activity&hl=en" target="_blank">
+								<span title="google play" class="gplay-app"> &nbsp; </span> 
+								</a>
+							</div>
+							
+							<div class="cart-status">
+								            
+ 
+  
+<!-- shopping cart -->     
+<div class="block block-cart">
+<div class="cart-container skip-minicart">
+        <div class="header-cart">
+        <div class="inner">
+            <div class="relative">
+				
+                <a href="http://www.spencers.in/checkout/cart/" class="btn btn-iconed cart-btn"> <i class="icon-shopcart"></i> <span class="txt" id="mini-cart-total" >My Cart </span><span class="num-items">0</span> </a>
+                                <!-- CART ITEMS -->
+                
+                    <div class="cart-items-box" style="display:none">
+                    <div class="cart-header" id="header-text"> 
+                    No items in cart to display 
+                      </div>
+                        
+                        <ul class="items clearfix" id="mini-cart-summary" style="height: auto;max-height: 400px;overflow-x: hidden;">
+                                                    </ul> 
+                        
+                        <div class="row mini-cart-footer" id="minicartfooterid">
+							<div style="float: right; clear: both; font-family: 'MyriadPro-Regular'; font-size: 20px; padding: 10px 20px 0px 120px;">Total : <span class="price">₹0</span> </div>
+                          <div class="clearfix"> <a type="submit" href="http://www.spencers.in/checkout/cart/"  title="View Cart" class="btn btn-warning sps-button view-cart-btn"><span>View Cart</span></a> 
+                           
+                            <a href="http://www.spencers.in/checkout/onepage/"  title="Checkout" class="btn btn-warning sps-button mini-cart-see-all"><span>Checkout</span></a>                           
+                            </div>
+                        </div>  
+                    </div>          
+               
+                <!-- /CART ITEMS -->
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /shopping cart -->  
+ <div id="load_animate" style="display:none; position:fixed; top:46%; left:46%; z-index:9999"><img src="http://www.spencers.in/skin/frontend/base/default/images/ajax_load.gif" alt="Loading.." title="Loading..."></div>
+</div>
+								<!--<i class="cart-icon">&nbsp;</i>
+								<a href=""><span class="txt"> </span></a><span class="num-items"></span>-->
+							</div>
+							<!--<div class="tot-price hidden-lg hidden-md">
+								<span class="rup-symbol">₹</span> 454.00
+							</div>-->
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+		
+		
+			<!-- mobile search-->
+			<div  class="mob-search">
+			<div class="searchbarbg_r col-md-5 col-xs-12 col-sm-6" id="searchmain">
+  <div class="searchbarbg_l">                                    
+		<div class="srachleft_div" id="searchbar">
+ 
+					
+						
+  <form id="search_mini_form" action="http://www.spencers.in/search/" method="get">
+ <div onblur="javascript:return hideDiv();" tabindex="0" class="searchtxtdiv">
+   <div class="">
+						<div class="input-group hidden-xs">
+							<div class="input-group-btn search-panel">
+								<button type="button" id="srh-cat-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+									<span id="search_concept">Category</span><span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+								      
+							<li id="catli_6"><a href="#"><span value="6">Beverages</span></a></li>
+						      
+							<li id="catli_7"><a href="#"><span value="7">Branded Foods</span></a></li>
+						      
+							<li id="catli_8"><a href="#"><span value="8">Bread, Dairy & Eggs</span></a></li>
+						      
+							<li id="catli_3"><a href="#"><span value="3">Fruits & Vegetables</span></a></li>
+						      
+							<li id="catli_4"><a href="#"><span value="4">Grocery & Staples</span></a></li>
+						      
+							<li id="catli_295"><a href="#"><span value="295">Offers</span></a></li>
+						      
+							<li id="catli_10"><a href="#"><span value="10">Household</span></a></li>
+						      
+							<li id="catli_287"><a href="#"><span value="287">Imported & Gourmet</span></a></li>
+						      
+							<li id="catli_5"><a href="#"><span value="5">Non-Veg</span></a></li>
+						      
+							<li id="catli_9"><a href="#"><span value="9">Personal Care</span></a></li>
+						      
+							<li id="catli_327"><a href="#"><span value="327">What's New</span></a></li>
+														</ul>
+							</div>	
+							
+							 <span>
+							<!--<input id="search" type="text" name="" value="" class=" searchtext input-text" /> -->
+							<input id="search" type="text" name="q" value="" class="searchtext searchicon input-text required-entry" placeholder="I&#039;m Looking for" />
+							
+							<input type="submit" title="Search" value="" class="searchlens" style="display:none"/>
+							</span>
+							
+        
+        
+         <!--<div class="searchbutton">
+					<div class="navbtn">
+							<span class="navbtn_l"></span>
+							<span class="navbtn_m">
+								 <button class="mj_btnbg button" title="Search" type="submit"><span><span>Search</span></span></button>
+							</span>
+							<span class="navbtn_r"></span>
+					</div>
+			</div> -->
+							</div>
+						
+			
+							<div class="mob-search mob-srh-btn hidden-lg hidden-md hidden-sm">
+							<span>
+							<!--<input id="search" type="text" name="" value="" class=" searchtext input-text" /> -->
+							<input id="search1" type="text" name="q" value="" class="searchtext searchicon input-text required-entry" placeholder="I&#039;m looking for"  />
+							<input type="submit" title="Search" value="" class="searchlens" style="display:none"/>
+							</span>
+							
+						</div>
+						
+						<span class="searchdropdown" id="ddlSearchTree" onclick="javascript:return CheckDiv();" style="display: inline;">
+								<input type="text" name="" value="All Categories" id="txtSearchTree" disabled="disabled" style="display:none" class="treetxtbox">
+								<span class="searchdropdownstyle" id="imgDdl" style=""></span>
+							</span>       
+        
+							<div id="search_autocomplete" class="search-autocomplete"></div>
+		<script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', '');
+            var SolrBridgeAutocomplete = new SolrBridgeSearch('search',{id:'autocomplete',target:'#search_mini_form',inputid:'search',containerid:'search_mini_form',boxWidth:469,searchTextPlaceHolder:'Search entire store here...',currencySign:'&nbsp;₹&nbsp;',currencycode:'INR',ajaxBaseUrl:'http://www.spencers.in',searchResultUrl:'http://www.spencers.in/search',viewAllResultText:'View all search results for %s',categoryText:'Categories',viewAllCategoryText:'View all categories >>',viewAllBrandsText:'View all brands >>',keywordsText:'Keywords',productText:'product',productsText:'products',brandText:'Brands',storetimestamp:'1496757870',storeid:'13',customergroupid:'0',categoryRedirect:'0',showBrand:'1',showBrandAttributeCode:'brand',displaykeywordsuggestion:'true',displayResultOfText:'Search results for %s',displayResultOfInsteadText:'Search results for %s instead',currencyPos:'before',displayThumb:'1',allowFilter:'1',categoryLimit:'0',brandLimit:'3',fromPriceText:'from',ajaxprice:0});
+            var SolrBridgeAutocomplete = new SolrBridgeSearch('search1',{id:'autocomplete',target:'#search_mini_form',inputid:'search1',containerid:'search_mini_form',boxWidth:469,searchTextPlaceHolder:'Search entire store here...',currencySign:'&nbsp;₹&nbsp;',currencycode:'INR',ajaxBaseUrl:'http://www.spencers.in',searchResultUrl:'http://www.spencers.in/search',viewAllResultText:'View all search results for %s',categoryText:'Categories',viewAllCategoryText:'View all categories >>',viewAllBrandsText:'View all brands >>',keywordsText:'Keywords',productText:'product',productsText:'products',brandText:'Brands',storetimestamp:'1496757870',storeid:'13',customergroupid:'0',categoryRedirect:'0',showBrand:'1',showBrandAttributeCode:'brand',displaykeywordsuggestion:'true',displayResultOfText:'Search results for %s',displayResultOfInsteadText:'Search results for %s instead',currencyPos:'before',displayThumb:'1',allowFilter:'1',categoryLimit:'0',brandLimit:'3',fromPriceText:'from',ajaxprice:0});
+        //]]>
+        </script>
+					</div>
+					
+					</div>
+</form>
+</div>
+  </div>
+   </div>
+   <script>
+jQuery(window).load(function () {
+    var screen = jQuery(window)    
+    if (screen.width() > 500) {
+    	//alert('search');
+        jQuery("#search1").prop('disabled', true);
+        jQuery("#search").prop('disabled', false);
+    }
+    else {
+        jQuery("#search1").prop('disabled', false);
+        jQuery("#search").prop('disabled', true);
+    }
+});
+   </script>
+   <style type="text/css" >
+   
+   input:focus::-webkit-input-placeholder{
+    color: transparent!important;
+}
+input:focus::-moz-placeholder{
+    color: transparent!important;
+}
+input:focus:-moz-placeholder{
+    color: transparent!important;
+}
+
+   </style>
+   
+			</div>
+										
