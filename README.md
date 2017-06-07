@@ -7,13 +7,15 @@ Requirements:
      >Node.js
      >Angular
      >Mongodb
+
 Install Visual C++ Build Tools.
+
 Run the following commands (Once) 
 
-[Note: Second command is required only for Windows]
+     [Note: Second command is required only for Windows]
 
-1.npm config set python python2.7 
-2.npm config set msvs_version 2015
+      1.npm config set python python2.7 
+      2.npm config set msvs_version 2015
 
 Installation:
 
